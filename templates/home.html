@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <!-- jQuery javascript urls -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" crossorigin="anonymous"></script>
+
+    <script src="{% static 'JS/getText.js' %}"></script>
+    <script src="{% static 'JS/textToSpeech.js' %}"></script>
+
+    <script>
+        // get the base url for ajax queries
+        let getUrl = window.location;
+        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split("/")[0];
+
+        // get the csrf token
+        function getCsrf() {
+            return $("input[name='csrfmiddlewaretoken']").val();
+        }
+    </script>
+</head>
+<body>
+<h1>Text to Speech</h1>
+
+<div id="text-entry">
+    <textarea id="text-input" cols="30" rows="10" placeholder="Type here..."></textarea>
+    <button id="start" class="btn btn-success mt-5 me-3">Start</button>
+</div>
+
+
+</body>
+</html>
